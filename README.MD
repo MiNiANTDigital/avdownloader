@@ -1,20 +1,22 @@
 # Audio / Video Downloader
 
-- A simple web application for downloading YouTube videos using `yt-dlp`, built with Flask.
+A simple web application for downloading YouTube videos using `yt-dlp`, built with Flask.
 
 ## Default deployment: Local Python environment
 
-- Note: ffmpeg installation is required if you wish to combine best quality audio and video and convert into single file such as .mp4
+Note: ffmpeg installation is required if you wish to combine best quality audio and video and convert into single file such as .mp4
 
 ## Optional deployment: Dockerfile is available for deploying on Google Cloud Run.
 
-- Note: Audio / Video platforms might require authentication and block the app, you'll need to extract a cookies.txt file to bypass the bot detection, this is not included in this app. You can reference
+Note: Audio / Video platforms might require authentication and block the app, you'll need to extract a cookies.txt file to bypass the bot detection, this is not included in this app. You can reference
+
+You can modify the docker file accordingly for deploying to other cloud platforms.
 
 ## Features
 
-- Download Audio/Video in the best available format.
-- User-friendly web interface.
-- Default local deployment or optional Google Cloud Run deployment with Dockerfile available.
+Download Audio/Video in the best available format.
+User-friendly web interface.
+Default local deployment or optional Google Cloud Run deployment with Dockerfile available.
 
 ## Credit
 
