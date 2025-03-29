@@ -1,0 +1,7 @@
+Flask
+gunicorn
+yt-dlp
+ffmpeg-python
+requests
+os
+

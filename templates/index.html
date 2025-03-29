@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Video Video Downloader</title>
+    <script>
+        async function selectFolder() {
+            const options = {
+                type: 'openDirectory',
+            };
+            try {
+                const handle = await window.showDirectoryPicker(options);
+                const folderName = handle.name;
+                document.getElementById('save_path').value = folderName;  // Display folder name in the input field
+            } catch (err) {
+                alert('Folder selection failed or was canceled.');
+            }
+        }
+
+        async function downloadVideo(event) {
+            event.preventDefault();  // Prevent the form from submitting
+
+            const url = document.getElementById('video_url').value;
+            const savePath = document.getElementById('save_path').value;
+
+            if (!url || !savePath) {
+                alert('Please provide both a YouTube URL and a save path.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('url', url);
+            formData.append('save_path', savePath);
+
+            const response = await fetch('/download', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const result = await response.json();
+
+            if (result.message) {
+                alert(result.message);
+
+            } else {
+                alert(result.error || 'An error occurred.');
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>YouTube Video Downloader</h1>
+
+    <form id="download_form" onsubmit="downloadVideo(event)">
+        <label for="video_url">YouTube URL:</label><br>
+        <input type="text" id="video_url" name="video_url" required><br><br>
+
+        <label for="save_path">Save Path (folder name):</label><br>
+        <input type="text" id="save_path" name="save_path" required readonly><br><br>
+
+        <button type="button" onclick="selectFolder()">Choose Folder</button><br><br>
+
+        <button type="submit">Download Video</button>
+    </form>
+
+<div
+    style="background-color: #ffdddd; margin-top:100px;padding: 10px; border: 1px solid #ff0000; border-radius: 5px; margin-bottom: 15px; font-size: 14px;">
+    <strong>Disclaimer:</strong> This tool is for personal and educational use only. Downloading videos from certain
+    websites may violate their terms of service.
+    Ensure you have the necessary rights and permissions before downloading any content. The developers are not
+    responsible for any misuse.
+    <br><br>
+    <strong>License:</strong> This tool is developed under the <a href="https://opensource.org/licenses/MIT"
+        target="_blank">MIT License</a>.
+    You are free to use, modify, and distribute it, but it comes without any warranty. See the repository for more
+    details.
+</div>
+    
+</body>
+
+</html>
