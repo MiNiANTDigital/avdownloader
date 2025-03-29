@@ -14,9 +14,9 @@ You can modify the docker file accordingly for deploying to other cloud platform
 
 ## Features
 
-Download Audio/Video in the best available format.
-User-friendly web interface.
-Default local deployment or optional Google Cloud Run deployment with Dockerfile available.
+- Download Audio/Video in the best available format.
+- User-friendly web interface.
+- Default local deployment or optional Google Cloud Run deployment with Dockerfile available.
 
 ## Credit
 
